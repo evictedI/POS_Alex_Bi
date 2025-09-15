@@ -1,51 +1,76 @@
 class Student {
     private String name;
-    private String gender;
+    private char gender;
     private float kg;
     private float cm;
 
-    public Student (String name, String gender) {
+    public Student (String name, char gender, float cm, float kg) {
+        this.setName(name);
+        this.setGender(gender);
+        this.setCm(cm);
+        this.setKg(kg);
+    }
+
+    public void setName (String name) {
         this.name = name;
+    }
+
+    public void setGender (char gender) {
         this.gender = gender;
     }
-        public void Set (float kg, float cm, String name, String gender) {
-    this.kg = kg;
-    this.cm = cm;
-    this.name = name;
-    this.gender = gender;
+
+    public void setKg (float kg) {
+        this.kg = kg;
     }
-    public Student() {
-    this.name = "Joe";
-    this.gender = "m";
-    this.kg = 50;
-    this.cm = 170;
+
+    public void setCm (float cm) 
+    {
+        this.cm = cm;
     }
-    
+
     public float BMIcalc(){
-    float m = cm / 100;
-    return ((this.kg) / (m * m));
+        float m = cm / 100;
+        return ((this.kg) / (m * m));
+    } 
+
+    public String mof() {
+        if(this.gender == 'm')
+        {
+            return "männlich";
+        }
+        else {
+            return "weiblich";
+        }    
     }
+
     public String Result() {
-    float bmi = BMIcalc();
-    if (gender.equals("m")){
-        if(bmi < 18.5) return "Underweight(man)";
-        else if (bmi <= 24.9) return "Normalweight(man)";
-        else return "Overweight(man)";
-    }
-        else if(gender.equals("w")) {
-        if(bmi < 18.5) return "underweight(woman)";
-        else if(bmi <= 24.9) return "normalweight(woman)";
-        else return "overweight(woman)";
+        float bmi = BMIcalc();
+        if (gender == 'm')
+        {
+            if(bmi < 18.5) return "Underweight(man)";
+
+            else if (bmi <= 24.9) return "Normalweight(man)";
+
+            else return "Overweight(man)";
+        }
+        else if(gender == 'w') 
+        {
+            if(bmi < 18.5) return "underweight(woman)";
+
+            else if(bmi <= 24.9) return "normalweight(woman)";
+
+            else return "overweight(woman)";
         }
         else {
             return "unkown gender";
         }
     }
+
     public void printInfo() {
         System.out.println("\n--- Ergebnis ---");
         System.out.println("Name: " + name);
-        System.out.println("Geschlecht: " + gender);
-        System.out.printf("BMI: %.2f%n", BMIcalc());
+        System.out.println("Geschlecht: " + mof());
+        System.out.printf("BMI: ", BMIcalc());
         System.out.println("Bewertung: " + Result());
     }
 }
