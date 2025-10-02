@@ -3,7 +3,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 public class StudentTest
 {
     /**
@@ -23,19 +22,16 @@ public class StudentTest
     {
         System.out.println("Executing SetUp()");
     }
-    
-        @Test
+
+    @Test
     public void Test_BMI(){
         Student ferdi = new Student("Ferdinand", true, 181, 100);
         assertEquals("Übergewicht", ferdi.bmi_werter(), "BMI Wertung"); //Korrekt
         //assertEquals("Übergewichtung", ferdi.bmi_werter(), "BMI Wertung"); //Error
     }
-    
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
+    catch (Expetion e) {
+        System.out.println("Exception gefangen: ")
+    }
     @AfterEach
     public void tearDown()
     {

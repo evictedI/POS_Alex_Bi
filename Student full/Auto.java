@@ -33,34 +33,27 @@ public class Auto {
     }
 
     public void setEigengewicht(int eigengewicht) {
-        if ((eigengewicht >= 600) && (eigengewicht <= 3000)) {
-            this.eigengewicht = eigengewicht;
-        } else {
-            System.out.println("Fehler: kein gültiges Eigengewicht (600..3000)!");
-            this.eigengewicht = 1300;
+        if(eigengewicht < 600 || eigengewicht> 3000){
+            throw new IllegalArgumentException("Kein gültiger wert!");
         }
-
+        this.eigengewicht = eigengewicht;
     }
 
     public void einsteigen(Person person) {
         // 1. Pruefung ob Referenz person nicht null
         if (person != null) {
-            if (this.fahrer == null) {
-                this.fahrer = person; // this kann man hier weglassen
-            } else {
-                if (this.beifahrer == null) {
-                    this.beifahrer = person;
-                } else {
-                    if (this.rueckbank == null) {
-                        this.rueckbank = person;
-                    } else {
-                        System.out.println("Fehler: das Auto ist voll!");
-                    }
-                }
-            }
-        } else { // entsprechende Fehlermeldung
-            System.out.println("Fehler: Parameter person ist null!");
+            throw new IllegalArgumentException("Wert darf nicht null sein");
         }
+        if (this.fahrer == null) {
+            this.fahrer = person;
+        } else if (this.beifahrer == null) {
+            this.beifahrer = person;
+        }
+        if (this.rueckbank == null)
+        {
+            this.rueckbank = person;
+        }
+        System.out.println("Fehler: das Auto ist voll!");
     }
 
     public void aussteigenFahrer() {
@@ -79,20 +72,18 @@ public class Auto {
         if (person != null) {
             if (this.fahrer == person) {
                 aussteigenFahrer();
-            } else {
-                if (this.beifahrer == person) {
-                    aussteigenBeifahrer();
-                } else {
-                    if (this.rueckbank == person) {
-                        aussteigenRueckbank();
-                    } else {
-                        System.out.println("Fehler: Person nicht im Auto.");
-                    }
-                }
+            } 
+            else if (this.beifahrer == person) {
+                aussteigenBeifahrer();
+            } else if (this.rueckbank == person) {
+                aussteigenRueckbank();
             }
-        } else {
-            System.out.println("Fehler: Parameter person ist null.");
-        }
+            else
+            {
+                System.out.println("Fehler: Person nicht im Auto.");
+            }
+        } 
+        System.out.println("Fehler: Parameter person ist null.");
     }
 
     public void aussteigen(String name) {
@@ -103,12 +94,12 @@ public class Auto {
             } else {
                 if (this.beifahrer != null && name.equals(beifahrer.getName())) {
                     aussteigenBeifahrer();
-                } else {
-                    if (this.rueckbank != null && name.equals(rueckbank.getName())) {
-                        aussteigenRueckbank();
-                    } else {
-                        System.out.println("Fehler: Person nicht im Fahrzeug");
-                    }
+                } 
+                if (this.rueckbank != null && name.equals(rueckbank.getName())) {
+                    aussteigenRueckbank();
+                } 
+                else {
+                    System.out.println("Fehler: Person nicht im Fahrzeug");
                 }
             }
         } else {
