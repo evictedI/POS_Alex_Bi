@@ -3,19 +3,29 @@ class Student {
     private char gender;
     private float kg;
     private float cm;
-
-    public Student (String name, char gender, float cm, float kg) {
+    public Student (String name, char gender, float cm, float kg, boolean isMale) {
         this.setName(name);
-        this.setGender(gender);
         this.setCm(cm);
         this.setKg(kg);
+        if (isMale) {
+            this.setGender('m');
+        }
+        else this.setGender('f');
     }
-
     public void setName (String name) {
+        if (name.length() <= 2 ){
+            throw new IllegalArgumentException("name needs to be longer than 2 characters");
+        }
+        else if(name.length() > 50){
+            throw new IllegalArgumentException("name needs to be shorter than 50 characters");
+        }
         this.name = name;
     }
 
     public void setGender (char gender) {
+        if (gender != 'm' && gender != 'f') {
+            throw new IllegalArgumentException("please either select m or f");
+        }
         this.gender = gender;
     }
 
@@ -67,9 +77,11 @@ class Student {
     }
 
     public void printInfo() {
-        System.out.println("\n--- Ergebnis ---");
-        System.out.println("Name: " + name);
-        System.out.println("Geschlecht: " + mof());
+        System.out.println("\n--- Result ---");
+        System.out.println("Name: " + this.name);
+        System.out.println("Weight: " + this.kg);
+        System.out.println("Height: " + this.cm);
+        System.out.println("Gender: " + mof());
         System.out.printf("BMI: ", BMIcalc());
         System.out.println("Bewertung: " + Result());
     }
