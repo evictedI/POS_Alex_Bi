@@ -1,4 +1,3 @@
-
 public class Auto {
     private String name;
     private int eigengewicht;
@@ -41,15 +40,15 @@ public class Auto {
 
     public void einsteigen(Person person) {
         // 1. Pruefung ob Referenz person nicht null
-        if (person != null) {
+        if (person == null) {
             throw new IllegalArgumentException("Wert darf nicht null sein");
         }
-        if (this.fahrer == null) {
+        if (this.fahrer == null && person != fahrer && person != beifahrer && person != rueckbank) {
             this.fahrer = person;
-        } else if (this.beifahrer == null) {
+        } else if (this.beifahrer == null && person != fahrer && person != beifahrer && person != rueckbank) {
             this.beifahrer = person;
         }
-        if (this.rueckbank == null)
+        if (this.rueckbank == null && person != fahrer && person != beifahrer && person != rueckbank)
         {
             this.rueckbank = person;
         }
@@ -102,9 +101,9 @@ public class Auto {
                     System.out.println("Fehler: Person nicht im Fahrzeug");
                 }
             }
-        } else {
-            System.out.println("Fehler: name ist null.");
         }
+        System.out.println("Fehler: name ist null.");
+
     }
 
     public double gesamtGewicht() {
