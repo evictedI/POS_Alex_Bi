@@ -38,21 +38,37 @@ public class Auto {
         this.eigengewicht = eigengewicht;
     }
 
+    public boolean Personimauto(Person person) {
+        boolean anwesend;
+        if(person == fahrer){
+            return true;
+        }
+        if(person == beifahrer) {
+            return true;
+        }
+        if(person == rueckbank) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public void einsteigen(Person person) {
         // 1. Pruefung ob Referenz person nicht null
         if (person == null) {
             throw new IllegalArgumentException("Wert darf nicht null sein");
         }
-        if (this.fahrer == null && person != fahrer && person != beifahrer && person != rueckbank) {
+        if (this.fahrer == null && Personimauto(person) == false) {
             this.fahrer = person;
-        } else if (this.beifahrer == null && person != fahrer && person != beifahrer && person != rueckbank) {
+        } else if (this.beifahrer == null && Personimauto(person) == false) {
             this.beifahrer = person;
         }
-        if (this.rueckbank == null && person != fahrer && person != beifahrer && person != rueckbank)
+        if (this.rueckbank == null && Personimauto(person) == false)
         {
             this.rueckbank = person;
         }
-        System.out.println("Fehler: das Auto ist voll!");
+        System.out.println("Fehler: das Auto ist voll! oder person sitzt bereits im Auto!");
     }
 
     public void aussteigenFahrer() {
