@@ -1,7 +1,7 @@
 public class boxinbox
 {
     public static void box(int i)
-    {
+    { 
         for(int zeile = 0; zeile < i; zeile++)
         {
             for(int spalte = 0; spalte < i; spalte++)

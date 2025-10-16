@@ -1,4 +1,4 @@
-    
+
 /**
  * Write a description of class arrays here.
  *
@@ -6,28 +6,29 @@
  * @version (a version number or a date)
  */
 public class arrays
-{
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class arrays
-     */
-    public arrays()
-    {
-        // initialise instance variables
-        x = 0;
+{
+    private int[] array1;
+    private int[] array2;
+    private Person[] persons;
+    private Person anna;
+    public void person(){
+        array1 = new int[] {1,2,3,4};
+        array2 = new int[10];
+        persons = new Person[10];
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void annainpersons() {
+        Person anna = new Person("Anna", true,180,60);
+        this.anna = anna;
+        persons[0] = anna;
+    }
+
+    public void annavonstudentsholen() {
+        Person tmp;
+        tmp =persons[0];
+        System.out.print(tmp);
+        System.out.println(persons[0]);
+        System.out.println(tmp == persons[0]);
     }
 }
