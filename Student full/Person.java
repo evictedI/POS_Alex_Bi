@@ -6,7 +6,10 @@ public class Person
     private double cm;
     private int gebjahr;
     private char gender;
-
+    private int[] array1;
+    private int[] array2;
+    private Person[] persons;
+    private Person anna;
     //Student Objekt
     public Person(String name, int gebjahr,double kg, double cm, char gender){
         this.setName(name);
@@ -14,6 +17,24 @@ public class Person
         this.setKg(kg);
         this.setCm(cm);
         this.setGender(gender);
+    }
+
+    public void Person(){
+        array1 = new int[] {1,2,3,4};
+        array2 = new int[10];
+        persons = new Person[10];
+    }
+
+    public void annainpersons() {
+        Person anna = new Person("Anna", true,180,60);
+        this.anna = anna;
+        persons[1] = anna;
+    }
+
+    public void  annavonstudentsholen() {
+        Person tmp;
+        tmp = persons[1];
+        System.out.print(tmp);
     }
 
     public Person(String name,boolean isMale,double cm, double kg){

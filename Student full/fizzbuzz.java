@@ -30,3 +30,15 @@ public class fizzbuzz
         }
     }
 }
+/*
+for(int i = 1; i<= 100; i++) {
+String printme = " ";
+if(i % 3 == 0) printme = "Fizz";
+if (i % 5 == 0) printme + printme = "whizz";
+if (i % 7 == 0) printme = printme + "buzz";
+if (i % 11 == 0) printme = printme + "bang";
+if(printme.isEmpty()) System.out.println(i)
+else System.out.println(printme);
+if (printme.equals("Fizzbuzzwhizzbang")) break;
+}
+ */
