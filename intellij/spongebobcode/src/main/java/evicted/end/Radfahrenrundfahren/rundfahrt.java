@@ -1,5 +1,7 @@
 package evicted.end.Radfahrenrundfahren;
 
+import java.util.Arrays;
+
 public class rundfahrt {
     private String name;
     private Etappe[] etappen;
@@ -107,5 +109,24 @@ public class rundfahrt {
             }
         }
         return minute / 60 + hour;
+    }
+    public int anzahlEtappen(){
+        int j = 0;
+        for (int i = 0; i < etappen.length; i++) {
+            if (etappen[i] != null) {
+                j += 1;
+            }
+        }
+        return j;
+    }
+    @Override
+    public String toString(){
+        return name +
+                "\nEtappen: " + anzahlEtappen() +
+                "\nGesamte-Länge: " + berechneGesamtlaenge() + " km" +
+                "\nGesamte-Dauer: " + berechneGesamtdauer() +
+                "\nLängste-Etappe: " + sucheLaengsteEtappe() +
+                "\nEtappen-Durschscnitt: " + berechneDurchschnittslaenge() +
+                "\n" + etappenUebersicht();
     }
 }

@@ -13,7 +13,7 @@ public class Radmain {
         r1.hinzufuegen(e4);
         r1.hinzufuegen(e5);
         r1.etappenUebersicht();
-        System.out.println(r1.berechneGesamtlaenge());
-        System.out.println(r1.berechneGesamtdauer());
+        System.out.println(r1.toString());
+
     }
 }
