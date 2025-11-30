@@ -9,5 +9,5 @@ public class christmas
             System.out.println("On the" + arr1[i] + "day of christmas" );
         }
     }
-    
+
 }

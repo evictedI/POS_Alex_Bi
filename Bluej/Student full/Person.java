@@ -6,7 +6,6 @@ public class Person
     private double cm;
     private int gebjahr;
     private char gender;
-
     //Student Objekt
     public Person(String name, int gebjahr,double kg, double cm, char gender){
         this.setName(name);
@@ -16,6 +15,7 @@ public class Person
         this.setGender(gender);
     }
 
+    
     public Person(String name,boolean isMale,double cm, double kg){
         this.setName(name);
         this.setKg(kg);
