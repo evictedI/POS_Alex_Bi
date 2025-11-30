@@ -76,16 +76,36 @@ public class rundfahrt {
         }
     return j;
     }
-    public float sucheLaengsteEtappe() {
-        float j = 0;
-
+    public float sucheLaengsteEtappe(){
+        float rv = 0;
         for (int i = 0; i < etappen.length; i++) {
-            for (int k = 0; k < etappen.length; k++) {
-                if (etappen[i] != null && etappen[k] != null && (etappen[i].getLaenge()) > etappen[k].getLaenge()) {
-                    j = etappen[i].getLaenge();
-                }
+            for (int j = i+1; j < etappen.length; j++) {
+                if (etappen[j] != null && rv < etappen[j].getLaenge())
+                    rv = etappen[j].getLaenge();
             }
         }
-        return j;
+        return rv;
+    }
+    public boolean annulieren(int pos) {
+        for (int i = 0; i < etappen.length; i++) {
+            if (etappen[i] == etappen[pos]) {
+                etappen[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+    public int berechneGesamtdauer() {
+        int hour = 0;
+        int minute = 0;
+        for (int i = 0; i < etappen.length; i++) {
+            if (etappen[i] != null) {
+                hour += etappen[i].getStunden();
+            }
+            if(etappen[i] != null && etappen[i].getMinuten() > 30) {
+                minute += etappen[i].getMinuten();
+            }
+        }
+        return minute / 60 + hour;
     }
 }
