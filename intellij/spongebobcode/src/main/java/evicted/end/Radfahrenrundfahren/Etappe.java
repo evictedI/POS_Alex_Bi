@@ -41,7 +41,7 @@ public class Etappe {
     }
 
     public void setNummer(int nummer) {
-        if(nummer <= 0) {
+        if(nummer < 0) {
             throw new IllegalArgumentException("Darf nicht negativ sein!");
         }
         this.nummer = nummer;
